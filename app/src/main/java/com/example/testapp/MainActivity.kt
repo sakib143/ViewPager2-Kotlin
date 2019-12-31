@@ -19,7 +19,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_main)
 
         val fragmentList : ArrayList<Fragment> =
@@ -30,7 +31,8 @@ class MainActivity : AppCompatActivity() {
         viewPager2.adapter = pagerAdapter
 
 
-        viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+        viewPager2.registerOnPageChangeCallback(
+            object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 Log.e("=> ","View pager selected position")
@@ -43,13 +45,16 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed()
         } else {
             viewPager2.currentItem = viewPager2.currentItem - 1
+
         }
     }
 
-    private inner class ScreenSlidePagerAdapter(fa : FragmentActivity, private val fragments:ArrayList<Fragment>)
+    private inner class ScreenSlidePagerAdapter(
+        fa : FragmentActivity,
+        private val fragments:ArrayList<Fragment>)
         : FragmentStateAdapter(fa) {
         override fun getItemCount(): Int = fragments.size
+
         override fun createFragment(position: Int): Fragment = fragments[position]
     }
-
 }

@@ -18,5 +18,4 @@ class FragmentOne : Fragment(){
     companion object{
         fun newInstance() = FragmentOne()
     }
-
 }
